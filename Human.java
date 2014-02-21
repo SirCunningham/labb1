@@ -24,10 +24,12 @@ public class Human implements Comparable<Human> {
                 nameArray[(int) (Math.random() * nameArray.length)]);
     }
 
+    @Override
     public String toString() {
-        return String.format("namn: %s, ålder: %d år", name, age);
+        return String.format("%s, ålder %d år", name, age);
     }
 
+    @Override
     public int compareTo(Human hum) {
         return age - hum.getAge();
     }

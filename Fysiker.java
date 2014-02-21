@@ -30,6 +30,7 @@ public class Fysiker extends Human {
         }
     }
 
+    @Override
     public String toString() {
         return String.format("%s, började fysik F%s", super.toString(),
                 String.valueOf(year).substring(2, 4));
