@@ -68,7 +68,7 @@ public class RandomFysiker {
                             + "heltal.");
                     System.exit(1);
                 }
-                if (testYear < 13) {
+                if (testYear < 14) {
                     testYear += 2000;
                 } else {
                     testYear += 1900;
