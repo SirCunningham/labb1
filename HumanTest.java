@@ -1,6 +1,6 @@
 package labb1;
 
-public class HumanApp {
+public class HumanTest {
 
     public static void main(String[] args) {
         Human putte = new Human(25, "Putte");

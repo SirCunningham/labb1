@@ -7,7 +7,7 @@ public class Human implements Comparable<Human> {
     private static String[] nameArray = {"Albert", "Bertil", "Cecilia",
         "Dennis", "Emma", "Ferdninand", "Gunilla", "Hilbert", "Ivar", "Joakim",
         "Klara", "Lena", "Martin", "Niklas", "Olle", "Petra", "Quisling",
-        "Robert", "Sandra", "Tove", "Ulla", "Viktor", "Willam", "Xavier",
+        "Robert", "Sandra", "Tove", "Ulla", "Viktor", "William", "Xavier",
         "Yngve", "Zack", "Åke", "Ängla", "Örjan"};
 
     public Human(int age, String name) {
