@@ -34,8 +34,8 @@ public class RandomFysiker {
             System.out.println(hum);
         }
         int people = 0;
-        for (int i = 0; i < args.length; i++) {
-            if (args[i].equals("-H") || args[i].equals("-F")) {
+        for (String arg : args) {
+            if (arg.equals("-H") || arg.equals("-F")) {
                 people += 1;
             }
         }
@@ -59,7 +59,7 @@ public class RandomFysiker {
                 cmdArray[n] = new Human(testAge, args[arg + 1]);
                 n += 1;
                 arg += 3;
-            } else {
+            } else if (args[arg].equals("-F")) {
                 try {
                     testAge = Integer.parseInt(args[arg + 2]);
                     testYear = Integer.parseInt(args[arg + 3]);
