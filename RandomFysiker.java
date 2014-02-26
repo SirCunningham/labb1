@@ -45,37 +45,38 @@ public class RandomFysiker {
         int testAge = 0;
         int testYear = 0;
         while (arg < args.length && n < people) {
-            if (!(args[arg].equals("-H") || args[arg].equals("-F"))) {
-                System.out.println("Argumenten måste vara på formen: "
-                        + "-H namn ålder eller -F namn ålder årskurs");
-            } else if (args[arg].equals("-H")) {
-                try {
-                    testAge = Integer.parseInt(args[arg + 2]);
-                } catch (NumberFormatException e) {
-                    System.err.println("Argumentet efter namnet måste vara ett "
-                            + "heltal.");
-                    System.exit(1);
-                }
-                cmdArray[n] = new Human(testAge, args[arg + 1]);
-                n += 1;
-                arg += 3;
-            } else if (args[arg].equals("-F")) {
-                try {
-                    testAge = Integer.parseInt(args[arg + 2]);
-                    testYear = Integer.parseInt(args[arg + 3]);
-                } catch (NumberFormatException e) {
-                    System.err.println("Argumenten efter namnet måste vara två "
-                            + "heltal.");
-                    System.exit(1);
-                }
-                if (testYear < 14) {
-                    testYear += 2000;
-                } else {
-                    testYear += 1900;
-                }
-                cmdArray[n] = new Fysiker(testAge, args[arg + 1], testYear);
-                n += 1;
-                arg += 4;
+            switch (args[arg]) {
+                case "-H":
+                    try {
+                        testAge = Integer.parseInt(args[arg + 2]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Argumentet efter namnet måste vara ett "
+                                + "heltal.");
+                        System.exit(1);
+                    }
+                    cmdArray[n] = new Human(testAge, args[arg + 1]);
+                    n += 1;
+                    arg += 3;
+                case "-F":
+                    try {
+                        testAge = Integer.parseInt(args[arg + 2]);
+                        testYear = Integer.parseInt(args[arg + 3]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Argumenten efter namnet måste vara två "
+                                + "heltal.");
+                        System.exit(1);
+                    }
+                    if (testYear < 14) {
+                        testYear += 2000;
+                    } else {
+                        testYear += 1900;
+                    }
+                    cmdArray[n] = new Fysiker(testAge, args[arg + 1], testYear);
+                    n += 1;
+                    arg += 4;
+                default:
+                    System.out.println("Argumenten måste vara på formen: "
+                            + "-H namn ålder eller -F namn ålder årskurs");
             }
         }
         for (Human hum : cmdArray) {
