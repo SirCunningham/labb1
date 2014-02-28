@@ -5,7 +5,7 @@ import java.util.*;
 public class RandomFysiker {
 
     public static void main(String[] args) {
-        Fysiker[] fysikerArray = new Fysiker[15];
+        Fysiker[] fysikerArray = new Fysiker[8];
         for (int i = 0; i < fysikerArray.length; i++) {
             fysikerArray[i] = new Fysiker();
         }
@@ -33,6 +33,9 @@ public class RandomFysiker {
         for (Human hum : randomHumFys) {
             System.out.println(hum);
         }
+        
+        System.out.println("--------------------argument--------------------");
+        
         int people = 0;
         for (String arg : args) {
             if (arg.equals("-H") || arg.equals("-F")) {
@@ -50,20 +53,21 @@ public class RandomFysiker {
                     try {
                         testAge = Integer.parseInt(args[arg + 2]);
                     } catch (NumberFormatException e) {
-                        System.err.println("Argumentet efter namnet måste vara ett "
-                                + "heltal.");
+                        System.err.println("Argumentet efter namnet måste vara "
+                                + "ett heltal.");
                         System.exit(1);
                     }
                     cmdArray[n] = new Human(testAge, args[arg + 1]);
                     n += 1;
                     arg += 3;
+                    break;
                 case "-F":
                     try {
                         testAge = Integer.parseInt(args[arg + 2]);
                         testYear = Integer.parseInt(args[arg + 3]);
                     } catch (NumberFormatException e) {
-                        System.err.println("Argumenten efter namnet måste vara två "
-                                + "heltal.");
+                        System.err.println("Argumenten efter namnet måste vara "
+                                + "två heltal.");
                         System.exit(1);
                     }
                     if (testYear < 14) {
@@ -74,9 +78,11 @@ public class RandomFysiker {
                     cmdArray[n] = new Fysiker(testAge, args[arg + 1], testYear);
                     n += 1;
                     arg += 4;
+                    break;
                 default:
-                    System.out.println("Argumenten måste vara på formen: "
+                    System.err.println("Argumenten måste vara på formen: "
                             + "-H namn ålder eller -F namn ålder årskurs");
+                    System.exit(1);
             }
         }
         for (Human hum : cmdArray) {
