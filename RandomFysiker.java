@@ -45,37 +45,35 @@ public class RandomFysiker {
         Human[] cmdArray = new Human[people];
         int arg = 0;
         int n = 0;
-        int testAge = 0;
-        int testYear = 0;
         while (arg < args.length && n < people) {
             switch (args[arg]) {
                 case "-H":
                     try {
-                        testAge = Integer.parseInt(args[arg + 2]);
+                        int testAge = Integer.parseInt(args[arg + 2]);
+                        cmdArray[n] = new Human(testAge, args[arg + 1]);
                     } catch (NumberFormatException e) {
                         System.err.println("Argumentet efter namnet måste vara "
                                 + "ett heltal.");
                         System.exit(1);
                     }
-                    cmdArray[n] = new Human(testAge, args[arg + 1]);
                     n += 1;
                     arg += 3;
                     break;
                 case "-F":
                     try {
-                        testAge = Integer.parseInt(args[arg + 2]);
-                        testYear = Integer.parseInt(args[arg + 3]);
+                        int testAge = Integer.parseInt(args[arg + 2]);
+                        int testYear = Integer.parseInt(args[arg + 3]);
+                        if (testYear < 14) {
+                            testYear += 2000;
+                        } else {
+                            testYear += 1900;
+                        }
+                        cmdArray[n] = new Fysiker(testAge, args[arg + 1], testYear);
                     } catch (NumberFormatException e) {
                         System.err.println("Argumenten efter namnet måste vara "
                                 + "två heltal.");
                         System.exit(1);
                     }
-                    if (testYear < 14) {
-                        testYear += 2000;
-                    } else {
-                        testYear += 1900;
-                    }
-                    cmdArray[n] = new Fysiker(testAge, args[arg + 1], testYear);
                     n += 1;
                     arg += 4;
                     break;
